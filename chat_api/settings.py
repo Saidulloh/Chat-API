@@ -34,7 +34,9 @@ CORS_ALLOW_ALL_ORIGINS = True
 # Application definition
 
 LOCAL_APPS = [
-
+    'apps.users',
+    'apps.chats',
+    'apps.messages'
 ]
 
 REQUIREMENTS = [
