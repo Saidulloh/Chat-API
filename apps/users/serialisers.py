@@ -12,7 +12,7 @@ class UserCreateSerializer(serializers.ModelSerializer):
             'avatarka',
             'bio',
             'email',
-            'create_at',
+            'created_at',
             'phone_number',
             'age',
             'password'
