@@ -12,7 +12,7 @@ from rest_framework_simplejwt.views import (
 schema_view = get_swagger_view(title='Chat API')
 
 api_urlpatterns = [
-    
+    path('', include('apps.users.urls')),
 
     # authorization
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
