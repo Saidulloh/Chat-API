@@ -9,6 +9,7 @@ class User(AbstractUser):
     Model for user
     """
     username = models.CharField(
+        unique=True,
         max_length=255,
         verbose_name='username'
     )
