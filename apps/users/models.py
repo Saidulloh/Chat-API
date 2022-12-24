@@ -37,7 +37,9 @@ class User(AbstractUser):
         verbose_name='created_at'
     )
     age = models.IntegerField(
-        verbose_name='age'
+        verbose_name='age',
+        null=True,
+        blank=True
     )
 
     def __str__(self):
