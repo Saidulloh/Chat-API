@@ -25,6 +25,7 @@ class User(AbstractUser):
         blank=True
     )
     email = models.EmailField(
+        unique=True,
         verbose_name='email'
     )
     phone_number = models.CharField(
