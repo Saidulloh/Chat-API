@@ -1,6 +1,7 @@
 from django.db import models
 
 from apps.users.models import User
+from apps.chats.models import Chat
 
 
 class Message(models.Model):
@@ -14,17 +15,15 @@ class Message(models.Model):
         auto_now_add=True,
         verbose_name='created_at'
     )
-    updated_at = models.DateTimeField(
-        auto_now=True,
-        verbose_name='updated_at'
+    chat = models.ForeignKey(
+        Chat,
+        on_delete=models.CASCADE,
+        related_name='chat',
+        verbose_name='chat'
     )
     owner = models.ManyToManyField(
         User,
         verbose_name='message_owner'
-    )
-    receiver = models.ManyToManyField(
-        User,
-        verbose_name='receiver'
     )
     is_read = models.BooleanField(
         default=False,
@@ -37,3 +36,4 @@ class Message(models.Model):
     class Meta:
         verbose_name = 'message'
         verbose_name_plural = 'Messages'
+        ordering = ['created_at']

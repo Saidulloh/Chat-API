@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from rest_framework.views import APIView
 
-# Create your views here.
+from apps.message.models import Message
+from apps.message.serialisers import MessageSerializer
+
+
+class MessageApiView(APIView):
+    queryset = Message.objects.all()
+    serializer_class = MessageSerializer
