@@ -24,9 +24,11 @@ class Chat(models.Model):
         upload_to='chat images/',
         verbose_name='chat_images'
     )
-    message = models.ManyToManyField(
-        Message,
-        verbose_name='message'
+    members = models.ManyToManyField(
+        User,
+        on_delete=models.DO_NOTHING,
+        related_name='members',
+        verbose_name='members'
     )
 
     def __str__(self):
