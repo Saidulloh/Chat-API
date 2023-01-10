@@ -1,12 +1,8 @@
-from rest_framework.routers import DefaultRouter
+from django.urls import path
 
-from apps.chats.views import ChatApiViewSet
+from apps.chats.views import ChatApiView
 
 
-router = DefaultRouter()
-router.register(
-    prefix="chats",
-    viewset=ChatApiViewSet
-)
-
-urlpatterns = router.urls
+urlpatterns = [
+    path('chats/', ChatApiView.as_view())
+]
