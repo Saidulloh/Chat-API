@@ -1,7 +1,6 @@
 from django.db import models
 
 from apps.users.models import User
-from apps.message.models import Message
 
 
 class Chat(models.Model):
@@ -26,7 +25,6 @@ class Chat(models.Model):
     )
     members = models.ManyToManyField(
         User,
-        on_delete=models.DO_NOTHING,
         related_name='members',
         verbose_name='members'
     )
