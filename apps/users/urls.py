@@ -5,12 +5,12 @@ from apps.users.views import UserApiViewSet, UserDetailApiViewSet
 
 router = DefaultRouter()
 router.register(
-    prefix="",
+    prefix="users",
     viewset=UserApiViewSet
 )
 
 router.register(
-    prefix="",
+    prefix="user",
     viewset=UserDetailApiViewSet
 )
 

@@ -7,16 +7,16 @@ from apps.users.serialisers import UserCreateSerializer
 
 
 class UserApiViewSet(GenericViewSet,
-                    CreateModelMixin,
-                    ListModelMixin):
+                     CreateModelMixin,
+                     ListModelMixin):
     queryset = User.objects.all()
     serializer_class = UserCreateSerializer
 
 
 class UserDetailApiViewSet(GenericViewSet,
-                        RetrieveModelMixin,
-                        UpdateModelMixin,
-                        DestroyModelMixin):
+                           RetrieveModelMixin,
+                           UpdateModelMixin,
+                           DestroyModelMixin):
     queryset = User.objects.all()
     serializer_class = UserCreateSerializer
     permission_classes = [IsOwner]
