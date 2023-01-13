@@ -1,8 +1,17 @@
-from django.urls import path
+from rest_framework.routers import DefaultRouter
 
-from apps.message.views import MessageApiView
+from apps.message.views import MessageApiViewSet, MessageListDetailApiViewSet
 
 
-urlpatterns = [
-    path('message/', MessageApiView.as_view())
-]
+router = DefaultRouter()
+router.register(
+    prefix="create",
+    viewset=MessageApiViewSet
+)
+
+router.register(
+    prefix="",
+    viewset=MessageListDetailApiViewSet
+)
+
+urlpatterns = router.urls

@@ -15,14 +15,20 @@ class Message(models.Model):
         auto_now_add=True,
         verbose_name='created_at'
     )
+    updated_at = models.DateTimeField(
+        auto_now=True,
+        verbose_name='updated_at'
+    )
     chat = models.ForeignKey(
         Chat,
         on_delete=models.CASCADE,
         related_name='chat',
         verbose_name='chat'
     )
-    owner = models.ManyToManyField(
+    owner = models.ForeignKey(
         User,
+        on_delete=models.DO_NOTHING,
+        related_name='message_owner',
         verbose_name='message_owner'
     )
     is_read = models.BooleanField(
