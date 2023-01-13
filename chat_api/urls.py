@@ -13,8 +13,8 @@ schema_view = get_swagger_view(title='Chat API')
 
 api_urlpatterns = [
     path('', include('apps.users.urls')),
-    path('', include('apps.chats.urls')),
-    path('', include('apps.message.urls')),
+    path('chats/', include('apps.chats.urls')),
+    path('messages/', include('apps.message.urls')),
 
     # authorization
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
