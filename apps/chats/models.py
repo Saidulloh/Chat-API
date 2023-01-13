@@ -14,11 +14,6 @@ class Chat(models.Model):
         auto_now_add=True,
         verbose_name='created_at'
     )
-    owner = models.ForeignKey(
-        User,
-        on_delete=models.DO_NOTHING,
-        verbose_name='chat_owner'
-    )
     image = models.ImageField(
         upload_to='chat images/',
         verbose_name='chat_images'
