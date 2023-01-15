@@ -1,7 +1,9 @@
 from django.db import models
 
-from apps.users.models import User
 from apps.chats.models import Chat
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 class Message(models.Model):

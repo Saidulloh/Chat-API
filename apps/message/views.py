@@ -22,7 +22,7 @@ class MessageApiViewSet(GenericViewSet,
         try:
             owner = request.user
             chat_obj = Chat.objects.get(id=request.data['chat'])
-            if request.user in chat_obj.members.all():
+            if owner in chat_obj.members.all() or owner == chat_obj.owner:
                 Message.objects.create(text=request.data['text'], chat=chat_obj, owner=owner)
                 return super().create(request, *args, **kwargs)
             return Response(data={"error": "You are not a member in chat {}".format(chat_obj.title)})
