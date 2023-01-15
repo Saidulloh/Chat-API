@@ -3,7 +3,7 @@ from rest_framework import serializers
 from apps.users.models import User
 
 
-fields = ['id', 'username', 'avatarka', 'bio', 'email', 'created_at', 'phone_number', 'age']
+fields = ['id', 'username', 'avatarka', 'bio', 'email', 'created_at', 'phone_number', 'age', 'last_activity']
 
 
 class UserCreateSerializer(serializers.ModelSerializer):
@@ -34,7 +34,8 @@ class UserDetailSerializer(serializers.ModelSerializer):
             'bio',
             'email',
             'phone_number',
-            'age'
+            'age',
+            'last_activity'
         )
 
 

@@ -1,5 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser 
+from django.contrib.auth.models import AbstractUser
+from django.utils import timezone
 
 from utils.NumberValidator import phone_validator
 
@@ -41,6 +42,10 @@ class User(AbstractUser):
         verbose_name='age',
         null=True,
         blank=True
+    )
+    last_activity = models.DateTimeField(
+        default=timezone.now(),
+        verbose_name='last_activity'
     )
 
     def __str__(self):
