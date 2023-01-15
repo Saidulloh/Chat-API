@@ -12,6 +12,7 @@ class ChatSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Chat
+        read_only_fields = ('owner',)
         fields = (
             'id',
             'title',
@@ -21,7 +22,8 @@ class ChatSerializer(serializers.ModelSerializer):
             'messages'
         )
 
-    def get_messages(self, obj):
+    @staticmethod
+    def get_messages(obj):
         messages_data = Message.objects.filter(chat_id=obj.id)
         serializer = MessageDetailSerializer(messages_data, many=True)
         return serializer.data
@@ -30,7 +32,7 @@ class ChatSerializer(serializers.ModelSerializer):
 class ChatCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Chat
-        read_only_fields = ('created_at',)
+        read_only_fields = ('created_at', 'owner',)
         fields = (
             'title',
             'image',

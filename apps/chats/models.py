@@ -1,6 +1,8 @@
 from django.db import models
 
-from apps.users.models import User
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 class Chat(models.Model):
@@ -17,6 +19,12 @@ class Chat(models.Model):
     image = models.ImageField(
         upload_to='chat images/',
         verbose_name='chat_images'
+    )
+    owner = models.ForeignKey(
+        User,
+        on_delete=models.DO_NOTHING,
+        related_name='owner',
+        verbose_name='owner'
     )
     members = models.ManyToManyField(
         User,
